@@ -86,6 +86,7 @@ function addCarrito() {
     `;
     tableListaCarrito.appendChild(row);
   });
+  /* agregar los articulos al localStorage */
   sincronizarLS() 
 }
 
