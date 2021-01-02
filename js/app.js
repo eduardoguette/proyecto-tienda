@@ -17,6 +17,12 @@ function callListeners() {
     articulosCarrito = []; /* Limpiamos el array carrito */
     cleanHTML(); /* Limpiamos el HTML del carrito */
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    articulosCarrito = JSON.parse(localStorage.getItem("articulos")) || []
+
+    addCarrito()
+  })
 }
 
 // Funciones
@@ -80,6 +86,7 @@ function addCarrito() {
     `;
     tableListaCarrito.appendChild(row);
   });
+  sincronizarLS() 
 }
 
 // clean html carrito
@@ -88,4 +95,8 @@ function cleanHTML() {
   while (tableListaCarrito.firstChild) {
     tableListaCarrito.removeChild(tableListaCarrito.firstChild);
   }
+}
+
+function sincronizarLS() {
+  localStorage.setItem("articulos", JSON.stringify(articulosCarrito))
 }
